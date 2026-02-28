@@ -22,12 +22,6 @@ const blocks = [
     cta: "Přečíst návod",
   },
   {
-    title: "Strategie pro rok 2026",
-    desc: "Kdy zvolit spořicí účet a kdy terminovaný vklad. Praktický pohled pro běžné spoření.",
-    href: "/blog/terminovany-vklad-vs-sporici-ucet-2026",
-    cta: "Přečíst strategii",
-  },
-  {
     title: "Úročení termínovaných vkladů",
     desc: "Pevná vs. variabilní sazba, výhody, rizika a jak správně vybrat podle vašeho cíle.",
     href: "/infocentrum/uroceni-terminovanych-vkladu",
