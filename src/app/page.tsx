@@ -57,9 +57,6 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto px-4 py-20 md:py-28 relative">
           <div className="max-w-2xl">
-            <span className="inline-block bg-[#f59e0b] text-[#0f1f35] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-              Nezávislý informační portál
-            </span>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
               Terminované vklady —<br />
               <span className="text-[#fbbf24]">spořte chytřeji</span>
@@ -84,19 +81,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 mt-12 max-w-lg">
-            {[
-              { value: "až 6 %", label: "p.a. u top bank" },
-              { value: "100 tis. €", label: "pojištění vkladu" },
-              { value: "od 1 000 Kč", label: "minimum vkladu" },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-center border border-white/20 rounded-xl p-3">
-                <div className="text-xl font-bold text-[#fbbf24]">{value}</div>
-                <div className="text-xs text-blue-200 mt-0.5">{label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
