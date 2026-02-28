@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes --skip-git-init)",
+      "Bash(npm install @next/mdx @mdx-js/loader @mdx-js/react gray-matter reading-time)",
+      "Bash(npm run build)",
+      "Bash(gh auth status)"
+    ]
+  }
+}
