@@ -18,8 +18,8 @@ const blocks = [
   {
     title: "Srovnání a výběr produktu",
     desc: "Na co se zaměřit při výběru banky, délky vkladu a podmínek předčasného výběru.",
-    href: "/blog/nejlepsi-terminovane-vklady-2025",
-    cta: "Zobrazit srovnání",
+    href: "/blog/jak-vybrat-delku-terminovaneho-vkladu",
+    cta: "Přečíst návod",
   },
   {
     title: "Strategie pro rok 2026",
