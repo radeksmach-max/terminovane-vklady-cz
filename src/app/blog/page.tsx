@@ -7,12 +7,6 @@ export const metadata: Metadata = {
   description: "Průvodce světem terminovaných vkladů. Jak vybrat banku, jak fungují úroky a jak vydělat více na spoření.",
 };
 
-function formatDate(dateStr: string) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("cs-CZ", { year: "numeric", month: "long", day: "numeric" });
-}
-
 export default function BlogPage() {
   const posts = getAllPosts();
 
@@ -36,12 +30,8 @@ export default function BlogPage() {
               className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3 text-xs text-slate-400">
-                {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
                 {post.readingTime && (
-                  <>
-                    <span>·</span>
-                    <span>{post.readingTime} min čtení</span>
-                  </>
+                  <span>{post.readingTime} min čtení</span>
                 )}
               </div>
               <h2 className="text-xl font-bold text-[#1e3a5f] mb-2">

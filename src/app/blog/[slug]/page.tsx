@@ -22,15 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function formatDate(dateStr: string) {
-  if (!dateStr) return "";
-  return new Date(dateStr).toLocaleDateString("cs-CZ", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
 // Simple MDX renderer — renders raw markdown as HTML via a basic parser
 // For more complex needs, install @next/mdx and use dynamic imports
 function renderMarkdown(content: string): string {
@@ -97,12 +88,8 @@ export default async function BlogPostPage({ params }: Props) {
             <p className="text-lg text-slate-600 mb-4 leading-relaxed">{post.description}</p>
           )}
           <div className="flex items-center gap-3 text-sm text-slate-400 border-b border-slate-100 pb-6">
-            {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
             {post.readingTime && (
-              <>
-                <span>·</span>
-                <span>{post.readingTime} min čtení</span>
-              </>
+              <span>{post.readingTime} min čtení</span>
             )}
           </div>
         </header>

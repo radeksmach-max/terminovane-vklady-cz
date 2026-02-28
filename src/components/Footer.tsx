@@ -35,7 +35,7 @@ export default function Footer() {
 
       <div className="border-t border-slate-700 py-4">
         <div className="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
-          © {year} terminované-vklady.cz · SIALINI, spol. s r.o. · Všechna práva vyhrazena
+          © {year} terminované-vklady.cz · Všechna práva vyhrazena
         </div>
       </div>
     </footer>

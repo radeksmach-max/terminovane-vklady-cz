@@ -18,6 +18,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
           <Link href="/#kalkulator" className="hover:text-[#2a5298] transition-colors">Kalkulačka</Link>
           <Link href="/#jak-funguje" className="hover:text-[#2a5298] transition-colors">Jak to funguje</Link>
+          <Link href="/infocentrum" className="hover:text-[#2a5298] transition-colors">Infocentrum</Link>
           <Link href="/blog" className="hover:text-[#2a5298] transition-colors">Blog</Link>
           <Link
             href="/#kalkulator"
@@ -46,6 +47,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t border-slate-100 px-4 py-3 space-y-2 text-sm font-medium">
           <Link href="/#kalkulator" className="block py-2 text-slate-700" onClick={() => setMenuOpen(false)}>Kalkulačka</Link>
           <Link href="/#jak-funguje" className="block py-2 text-slate-700" onClick={() => setMenuOpen(false)}>Jak to funguje</Link>
+          <Link href="/infocentrum" className="block py-2 text-slate-700" onClick={() => setMenuOpen(false)}>Infocentrum</Link>
           <Link href="/blog" className="block py-2 text-slate-700" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link
             href="/#kalkulator"
