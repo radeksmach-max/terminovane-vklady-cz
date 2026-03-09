@@ -10,11 +10,6 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
-  output: "export",        // generuje statický HTML výstup do složky /out
-  trailingSlash: true,     // /blog/ místo /blog — nutné pro Apache hosting
-  images: {
-    unoptimized: true,     // Next.js Image optimization vyžaduje server, bez ní to funguje staticky
-  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };
 
