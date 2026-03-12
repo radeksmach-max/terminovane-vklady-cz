@@ -115,11 +115,11 @@ export default function Home() {
               <span className="text-[#fbbf24]">vše na jednom místě</span>
             </h1>
             <p className="text-lg text-blue-100 mb-4 leading-relaxed">
-              Vysvětlíme vám, jak terminované vklady fungují, co si pohlídat ve smlouvě
+              Jak terminované vklady fungují, co si pohlídat ve smlouvě
               a jak si spočítat reálný čistý výnos po zdanění.
             </p>
             <p className="text-sm text-blue-200 mb-8">
-              Bez reklam konkrétních bank. Bez doporučení konkrétních produktů. Jen fakta.
+              Vše co potřebujete vědět o termínovaných vkladech. Jen fakta.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a

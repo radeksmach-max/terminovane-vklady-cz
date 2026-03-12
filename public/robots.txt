@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /podminky-pouziti.php
+Sitemap: https://www.terminovane-vklady.cz/sitemap.xml

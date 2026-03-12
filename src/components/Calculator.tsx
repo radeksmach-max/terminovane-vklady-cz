@@ -6,11 +6,33 @@ function formatCZK(amount: number) {
   return new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK", maximumFractionDigits: 0 }).format(amount);
 }
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
 export default function Calculator() {
+  const amountMin = 1000;
+  const amountMax = 2000000;
+  const amountStep = 1000;
+  const rateMin = 0.5;
+  const rateMax = 8;
+
   const [amount, setAmount] = useState(100000);
   const [rate, setRate] = useState(5.0);
   const [months, setMonths] = useState(12);
   const [compound, setCompound] = useState(false);
+
+  const handleAmountChange = (value: number) => {
+    const safeValue = Number.isFinite(value) ? value : amountMin;
+    const steppedValue = Math.round(safeValue / amountStep) * amountStep;
+    setAmount(clamp(steppedValue, amountMin, amountMax));
+  };
+
+  const handleRateChange = (value: number) => {
+    const safeValue = Number.isFinite(value) ? value : rateMin;
+    const clamped = clamp(safeValue, rateMin, rateMax);
+    setRate(Number(clamped.toFixed(2)));
+  };
 
   const result = useMemo(() => {
     const years = months / 12;
@@ -33,28 +55,46 @@ export default function Calculator() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {/* Vklad */}
         <div>
-          <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Vkladaná částka
+          <label htmlFor="amount-range" className="block text-sm font-semibold text-slate-700 mb-2">
+            Vklad: <span className="text-[#2a5298]">{formatCZK(amount)}</span>
           </label>
+          <input
+            id="amount-range"
+            type="range"
+            min={amountMin}
+            max={amountMax}
+            step={amountStep}
+            value={amount}
+            onChange={(e) => handleAmountChange(Number(e.target.value))}
+            className="w-full accent-[#2a5298] mb-2"
+            aria-label="Posuvník výše vkladu"
+          />
+          <div className="flex justify-between text-xs text-slate-400 mb-2">
+            <span>{(amountMin / 1000).toFixed(0)} tis. Kč</span>
+            <span>{(amountMax / 1000000).toFixed(1)} mil. Kč</span>
+          </div>
           <div className="relative">
             <input
+              id="amount-input"
               type="number"
-              min={1000}
-              step={1000}
+              min={amountMin}
+              max={amountMax}
+              step={amountStep}
               value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
+              onChange={(e) => handleAmountChange(Number(e.target.value))}
               className="w-full border border-slate-300 rounded-lg px-4 py-3 pr-12 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#2a5298]"
+              aria-label="Vklad v Kč"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">Kč</span>
           </div>
           <div className="flex gap-2 mt-2 flex-wrap">
-            {[50000, 100000, 250000, 500000].map((v) => (
+            {[50000, 100000, 250000, 500000, 1000000, 2000000].map((v) => (
               <button
                 key={v}
-                onClick={() => setAmount(v)}
+                onClick={() => handleAmountChange(v)}
                 className={`text-xs px-2 py-1 rounded border transition-colors ${amount === v ? "bg-[#1e3a5f] text-white border-[#1e3a5f]" : "border-slate-300 text-slate-600 hover:border-[#2a5298]"}`}
               >
-                {(v / 1000).toFixed(0)} tis.
+                {v >= 1000000 ? `${(v / 1000000).toFixed(v % 1000000 === 0 ? 0 : 1)} mil.` : `${(v / 1000).toFixed(0)} tis.`}
               </button>
             ))}
           </div>
@@ -62,30 +102,34 @@ export default function Calculator() {
 
         {/* Úroková sazba */}
         <div>
-          <label className="block text-sm font-semibold text-slate-700 mb-2">
+          <label htmlFor="rate-range" className="block text-sm font-semibold text-slate-700 mb-2">
             Úroková sazba p.a.: <span className="text-[#2a5298]">{rate.toFixed(2)} %</span>
           </label>
           <input
+            id="rate-range"
             type="range"
-            min={0.5}
-            max={8}
+            min={rateMin}
+            max={rateMax}
             step={0.1}
             value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
+            onChange={(e) => handleRateChange(Number(e.target.value))}
             className="w-full accent-[#2a5298] mb-2"
+            aria-label="Posuvník úrokové sazby"
           />
           <div className="flex justify-between text-xs text-slate-400">
             <span>0,5 %</span>
             <span>8 %</span>
           </div>
           <input
+            id="rate-input"
             type="number"
-            min={0.1}
-            max={20}
+            min={rateMin}
+            max={rateMax}
             step={0.1}
             value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
+            onChange={(e) => handleRateChange(Number(e.target.value))}
             className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2a5298] mt-2"
+            aria-label="Úroková sazba v procentech"
           />
         </div>
 

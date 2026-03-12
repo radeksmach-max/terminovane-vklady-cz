@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Minimální částka termínovaného vkladu",
   description:
     "Jaká bývá minimální částka pro založení termínovaného vkladu, proč se liší mezi bankami a na co si dát pozor při výběru produktu.",
+  alternates: {
+    canonical: "/infocentrum/minimalni-castka-terminovaneho-vkladu",
+  },
 };
 
 export default function MinimalniCastkaTerminovanehoVkladuPage() {
@@ -63,6 +67,35 @@ export default function MinimalniCastkaTerminovanehoVkladuPage() {
           když už máte vybudovanou rezervu a chcete efektivně zhodnotit větší obnos.
         </p>
       </article>
+
+      <section className="mt-10 bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-[#1e3a5f] mb-4">FAQ</h2>
+        <div className="space-y-3 text-sm text-slate-700">
+          <details>
+            <summary className="cursor-pointer font-semibold text-[#1e3a5f]">Mohu založit termínovaný vklad i s menší částkou?</summary>
+            <p className="mt-2">Ano, některé banky umožňují založení už od nižších tisícových částek.</p>
+          </details>
+          <details>
+            <summary className="cursor-pointer font-semibold text-[#1e3a5f]">Je vyšší minimální částka vždy výhodnější?</summary>
+            <p className="mt-2">Ne vždy. Vyšší minimum má smysl jen tehdy, když přináší skutečně lepší podmínky a zapadá do vašeho plánu.</p>
+          </details>
+        </div>
+      </section>
+
+      <section className="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-[#1e3a5f] mb-3">Související témata</h2>
+        <div className="flex flex-col gap-2 text-sm">
+          <Link href="/infocentrum/uroceni-terminovanych-vkladu" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Úročení termínovaných vkladů →
+          </Link>
+          <Link href="/infocentrum/proc-si-zaridit-terminovany-vklad" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Proč si zařídit termínovaný vklad →
+          </Link>
+          <Link href="/infocentrum/nevyhody-terminovaneho-vkladu" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Nevýhody termínovaného vkladu →
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

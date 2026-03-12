@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://terminovane-vklady.cz";
+const SITE_URL = "https://www.terminovane-vklady.cz";
 
 function getInfocentrumRoutes(): string[] {
   const infocentrumDir = path.join(process.cwd(), "src", "app", "infocentrum");
@@ -22,7 +22,7 @@ function getInfocentrumRoutes(): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const staticRoutes = ["/", "/blog", "/infocentrum", "/kontakty"];
+  const staticRoutes = ["/", "/blog", "/infocentrum", "/caste-dotazy", "/kontakty"];
   const infocentrumRoutes = getInfocentrumRoutes();
   const blogRoutes = getAllPosts().map((post) => `/blog/${post.slug}`);
 

@@ -1,0 +1,36 @@
+
+
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	color:#555;
+	line-height:1.5em;
+	
+	
+	}
+	
+	.hlavni
+	{
+	
+	max-width:1100px;
+	margin: 0 auto;
+	padding:50px;
+	
+
+	}
+	H1, h2, h3 {
+	
+	color:#333;
+	
+	
+	}
+	
+	h2, h3 {
+	
+	margin-top:40px;
+	
+	
+	}
+
+
+

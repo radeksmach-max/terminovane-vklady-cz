@@ -60,6 +60,26 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const html = renderMarkdown(post.content);
+  const relatedPosts = getAllPosts().filter((p) => p.slug !== slug).slice(0, 2);
+
+  const relatedInfocentrumBySlug: Record<string, Array<{ href: string; label: string }>> = {
+    "co-je-terminovany-vklad": [
+      { href: "/infocentrum/proc-si-zaridit-terminovany-vklad", label: "Proč si zařídit termínovaný vklad" },
+      { href: "/infocentrum/terminovany-vklad-relativni-jistota", label: "Termínovaný vklad – relativní jistota" },
+    ],
+    "jak-vybrat-delku-terminovaneho-vkladu": [
+      { href: "/infocentrum/uroceni-terminovanych-vkladu", label: "Úročení termínovaných vkladů" },
+      { href: "/infocentrum/minimalni-castka-terminovaneho-vkladu", label: "Minimální částka termínovaného vkladu" },
+    ],
+    "kdy-se-vyplati-terminovany-vklad-vs-sporici-ucet": [
+      { href: "/infocentrum/nevyhody-terminovaneho-vkladu", label: "Nevýhody termínovaného vkladu" },
+      { href: "/infocentrum/proc-si-zaridit-terminovany-vklad", label: "Proč si zařídit termínovaný vklad" },
+    ],
+  };
+
+  const relatedInfocentrum = relatedInfocentrumBySlug[slug] ?? [
+    { href: "/infocentrum", label: "Infocentrum – přehled článků" },
+  ];
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
@@ -99,6 +119,34 @@ export default async function BlogPostPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
+
+      <section className="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-[#1e3a5f] mb-3">Související články</h2>
+        <div className="flex flex-col gap-2 text-sm mb-4">
+          {relatedPosts.map((rp) => (
+            <Link
+              key={rp.slug}
+              href={`/blog/${rp.slug}`}
+              className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold"
+            >
+              {rp.title} →
+            </Link>
+          ))}
+        </div>
+
+        <h3 className="text-lg font-bold text-[#1e3a5f] mb-2">Související z Infocentra</h3>
+        <div className="flex flex-col gap-2 text-sm">
+          {relatedInfocentrum.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold"
+            >
+              {item.label} →
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* CTA kalkulačka */}
       <div className="mt-12 bg-gradient-to-br from-[#1e3a5f] to-[#2a5298] rounded-2xl p-6 text-white text-center">

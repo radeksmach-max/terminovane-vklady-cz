@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Úročení termínovaných vkladů",
@@ -74,6 +75,35 @@ export default function UroceniTerminovanychVkladuPage() {
           .
         </p>
       </article>
+
+      <section className="mt-10 bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-[#1e3a5f] mb-4">FAQ</h2>
+        <div className="space-y-3 text-sm text-slate-700">
+          <details>
+            <summary className="cursor-pointer font-semibold text-[#1e3a5f]">Je pro běžného střadatele vhodnější pevná sazba?</summary>
+            <p className="mt-2">Ve většině případů ano, protože dává lepší předvídatelnost a jednodušší plánování.</p>
+          </details>
+          <details>
+            <summary className="cursor-pointer font-semibold text-[#1e3a5f]">Může variabilní sazba přinést i horší výsledek?</summary>
+            <p className="mt-2">Ano, při nepříznivém vývoji sazeb může být celkový výnos nižší než u pevné sazby.</p>
+          </details>
+        </div>
+      </section>
+
+      <section className="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-xl font-bold text-[#1e3a5f] mb-3">Související témata</h2>
+        <div className="flex flex-col gap-2 text-sm">
+          <Link href="/infocentrum/minimalni-castka-terminovaneho-vkladu" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Minimální částka termínovaného vkladu →
+          </Link>
+          <Link href="/infocentrum/proc-si-zaridit-terminovany-vklad" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Proč si zařídit termínovaný vklad →
+          </Link>
+          <Link href="/infocentrum/nevyhody-terminovaneho-vkladu" className="text-[#2a5298] hover:text-[#1e3a5f] font-semibold">
+            Nevýhody termínovaného vkladu →
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

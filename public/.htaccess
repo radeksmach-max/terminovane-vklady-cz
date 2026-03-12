@@ -1,0 +1,24 @@
+RewriteEngine  on
+
+# HTTPS redirect
+RewriteCond %{HTTPS} !=on
+# This checks to make sure the connection is not already HTTPS
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R=301,NE,L]
+
+RewriteCond %{HTTP_HOST} ^terminovane-vklady\.cz$
+RewriteRule (.*) https://www.terminovane-vklady.cz/$1 [R=301]
+
+# Staré URL -> nové relevantní stránky
+RewriteRule ^kontakty\.php$ /kontakty/ [R=301,L]
+RewriteRule ^fungovani-terminovaneho-vkladu\.php$ /blog/co-je-terminovany-vklad/ [R=301,L]
+RewriteRule ^uroceni-terminovanych-vkladu\.php$ /infocentrum/uroceni-terminovanych-vkladu/ [R=301,L]
+RewriteRule ^nevyhody-terminovaneho-vkladu\.php$ /infocentrum/nevyhody-terminovaneho-vkladu/ [R=301,L]
+RewriteRule ^terminovany-vklad-relativni-jistota\.php$ /infocentrum/terminovany-vklad-relativni-jistota/ [R=301,L]
+RewriteRule ^minimalni-castka-terminovaneho-vkladu\.php$ /infocentrum/minimalni-castka-terminovaneho-vkladu/ [R=301,L]
+
+# Historické / mimo téma -> nejbližší relevantní rozcestník
+RewriteRule ^terminovany-vklad-ge-money-bank\.php$ /infocentrum/ [R=301,L]
+RewriteRule ^americka-hypoteka\.php$ /infocentrum/ [R=301,L]
+RewriteRule ^pujcky-od-lidi\.php$ /infocentrum/ [R=301,L]
+
+
